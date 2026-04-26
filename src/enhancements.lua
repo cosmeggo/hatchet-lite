@@ -1,19 +1,22 @@
+-- Most of the code was taken from the original enhancements.lua file, with some cleanup
+
 -- Sulfur 🜍
 SMODS.Enhancement {
     key = 'sulfur',
     pos = { x = 0, y = 0 },
-    config = { extra = { mult = 1 } },
+    config = { extra = { sulfur = 0 } },
     atlas = 'HLEnhancements',
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.mult}}
+        return {vars = {card.ability.extra.sulfur}}
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play then
-            context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
-                card.ability.extra.mult
+        if context.main_scoring and context.cardarea == G.play then
+            card.ability.extra.sulfur = (card.ability.extra.sulfur) + 1
             return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.MULT
+                message = "Upgrade!",
+                extra = {
+                    mult = card.ability.extra.sulfur
+                }
             }
         end
     end
@@ -44,12 +47,17 @@ SMODS.Enhancement {
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'm_hatchl_salt')
         return { vars = { numerator, denominator, card.ability.extra.repetitions } }
     end,
+
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and context.individual and
-            SMODS.pseudorandom_probability(card, 'm_hatchl_salt', 1, card.ability.extra.odds) then
-            return {
-                repetitions = card.ability.extra.repetitions
-            }
+        if context.repetition and card.should_retrigger then
+            return { repetitions = card.ability.extra.repetitions }
         end
-    end,
+        if context.main_scoring and context.cardarea == G.play then
+            card.should_retrigger = false
+            if SMODS.pseudorandom_probability(card, 'm_hatchl_salt', 1, card.ability.extra.odds, 'm_hatchl_salt') then
+                card.should_retrigger = true
+            card.ability.extra.repetitions = 2
+            end
+        end
+    end
 }
