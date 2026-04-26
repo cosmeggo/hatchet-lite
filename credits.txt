@@ -1,37 +1,10 @@
-This mod was initially developed in JokerForge, but development has been continued in VSC.
-
-== Lead Developer / Artist ==
-
+== Creator ==
 cosmeggo
 
-== Art ==
-
-cassknows (Creator of the Divine shader)
-
-== Programming Help ==
-
-N'
-NopeTooFast
-ThunderEdge
-nh6574
-Eremel
-Eris
-Somethingcom515 (Seals On Every)
-metanite64
-FreindlyBear
-srockw
-unusedparadox
-kierkat10
-
 == Special Thanks ==
+Meta
+Somethingcom
+Garbimidia
+LasagnaFelidae
 
-aikoyori - without them this mod wouldn't exist
-PokerthePoker
-Kaiwen
-nullstudios
-Astro
-Breuhh
-Sushi
-breuhh
-Jabon
-Everyone who has helped me with programming!
+Everyone who supported me in the original Hatchet mod

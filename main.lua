@@ -70,20 +70,8 @@ assert(SMODS.load_file("src/backs.lua"))()
 assert(SMODS.load_file("src/blinds.lua"))()
 assert(SMODS.load_file("src/enhancements.lua"))()
 assert(SMODS.load_file('src/jokers.lua'))()
--- assert(SMODS.load_file("src/sephirot.lua"))()
--- assert(SMODS.load_file("src/boosters.lua"))()
-
-SMODS.ConsumableType {
-    key = 'sephirot',
-    primary_colour = HEX('0ebab2'),
-    secondary_colour = HEX('0ebab2'),
-    collection_rows = { 4, 5 },
-    shop_rate = 0,
-    loc_txt = {
-        name = "Sephirot",
-        collection = "Sephirot Cards",
-    }
-}
+assert(SMODS.load_file("src/sephirot.lua"))()
+assert(SMODS.load_file("src/boosters.lua"))()
 
 --- Main Menu Colours (Credit to Cryptid and JoyousSpring)
 local game_main_menu_ref = Game.main_menu
